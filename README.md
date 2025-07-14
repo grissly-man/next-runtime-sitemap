@@ -18,8 +18,14 @@
 
 ## 🚧 Requirements
 
+> ⚠️ **Not compatible with serverless platforms like Vercel**  
+> Serverless functions run in isolated environments and only have access to files that are statically imported.  
+> Since this package inspects the deployed filesystem at runtime, it must run in a persistent environment (e.g., custom Node.js server, Docker, or self-hosted deployment).
+
+
 - ✅ Next.js **App Router** only (`app/` directory)
 - ✅ You must enable `force-static` + `revalidate` on dynamic routes for them to persist to the filesystem.
+- ✅ Static routes are automatically captured.
 - ❌ Fully dynamic (e.g., `force-dynamic`) routes are **not** included—they don’t emit files.
 
 ---
@@ -83,7 +89,7 @@ Use the right one depending on your architecture.
 
 ## 📄 Example Output
 
-Visit `/sitemaps/sitemap.xml` (or any other `[sitemap]` value) in your browser, or curl it:
+Visit `/sitemaps/sitemap.xml` in your browser, or curl it:
 
 ```bash
 curl https://your-domain.com/sitemaps/sitemap.xml
