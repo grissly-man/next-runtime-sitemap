@@ -1,0 +1,31 @@
+{
+  "name": "ts-app-router-src",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "start-server-and-test start http://localhost:3000 run-test",
+    "run-test": "node test/test.js"
+  },
+  "dependencies": {
+    "next": "15.3.5",
+    "next-runtime-sitemap": "file://../../..",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "start-server-and-test": "^2.0.12"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.5",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

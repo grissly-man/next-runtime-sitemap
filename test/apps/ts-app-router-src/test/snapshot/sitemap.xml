@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <changefreq>hourly</changefreq>
+    <lastmod>2025-07-14T20:57:56.996Z</lastmod>
+    <loc>https://mysite.local/</loc>
+    <priority>1</priority>
+  </url>
+  <url>
+    <changefreq>hourly</changefreq>
+    <lastmod>2025-07-14T21:01:51.243Z</lastmod>
+    <loc>https://mysite.local/dynamic/ghi/jkl</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <changefreq>hourly</changefreq>
+    <lastmod>2025-07-14T21:01:51.242Z</lastmod>
+    <loc>https://mysite.local/dynamic/abc/def</loc>
+    <priority>0.8</priority>
+  </url>
+</urlset>

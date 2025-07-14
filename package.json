@@ -1,0 +1,64 @@
+{
+  "name": "next-runtime-sitemap",
+  "version": "1.0.0",
+  "description": "Generates a sitemap for nextjs apps at runtime, using a crawl of the local filesystem",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "cd test && npm test",
+    "build": "tsc",
+    "format": "prettier -w .",
+    "check-format": "prettier --check ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grissly-man/next-runtime-sitemap.git"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "keywords": [
+    "nextjs",
+    "next.js",
+    "sitemap",
+    "sitemap-generator",
+    "seo",
+    "static-site-generation",
+    "ssg",
+    "app-router",
+    "file-based-routing",
+    "cli",
+    "cli-tool",
+    "xml",
+    "nodejs",
+    "web-crawlers",
+    "googlebot",
+    "search-engine-optimization",
+    "nextjs-plugin",
+    "static-export",
+    "dynamic-routing",
+    "revalidate",
+    "middleware",
+    "url-mapping",
+    "routes",
+    "website-indexing",
+    "open-graph",
+    "robots.txt"
+  ],
+  "author": "grissly-man",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grissly-man/next-runtime-sitemap/issues"
+  },
+  "homepage": "https://github.com/grissly-man/next-runtime-sitemap#readme",
+  "devDependencies": {
+    "@types/node": "^24.0.13",
+    "@types/react": "19.1.8",
+    "prettier": "^3.6.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "next": "^15.3.5",
+    "next-dynamic-sitemap": "^1.0.16"
+  }
+}

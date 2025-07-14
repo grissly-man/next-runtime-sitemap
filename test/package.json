@@ -1,0 +1,14 @@
+{
+  "name": "sitemap-route-tests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm ci -ws && npm run build -ws && npm test -ws"
+  },
+  "workspaces": [
+    "apps/*"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
