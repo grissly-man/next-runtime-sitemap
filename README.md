@@ -22,7 +22,6 @@
 > Serverless functions run in isolated environments and only have access to files that are statically imported.  
 > Since this package inspects the deployed filesystem at runtime, it must run in a persistent environment (e.g., custom Node.js server, Docker, or self-hosted deployment).
 
-
 - ✅ Next.js **App Router** only (`app/` directory)
 - ✅ You must enable `force-static` + `revalidate` on dynamic routes for them to persist to the filesystem.
 - ✅ Static routes are automatically captured.

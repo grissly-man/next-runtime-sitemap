@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Generates a sitemap for nextjs apps at runtime, using a crawl of the local filesystem",
   "main": "dist/index.js",
+  "bin": {
+    "see-output-dev": "dist/bin-see-output.js"
+  },
   "scripts": {
     "test": "cd test && npm test",
     "build": "tsc",

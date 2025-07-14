@@ -1,33 +1,13 @@
 import path from "node:path";
-import { readdir, readFile, stat } from "fs/promises";
+import { readdir } from "fs/promises";
 import { SiteMapURL } from "next-dynamic-sitemap/dist/types";
 import { generateURL } from "next-dynamic-sitemap/dist/util";
+import { introspectFile } from "./introspect-file";
 
 const META_RE = /\.meta$/;
 const NEXT_RESERVED_RE = /^_/;
 
 const FILE_SUFFIX_RE = /(?:(?:^|\/)?index)?\.meta$/;
-
-async function introspectPage(dir: string, page: string) {
-  const fullPath = path.join(dir, page);
-  try {
-    const [pageContent, stats] = await Promise.all([
-      readFile(fullPath, "utf8"),
-      stat(fullPath),
-    ]);
-    const pageParsed = JSON.parse(pageContent);
-    return {
-      path: page.replace(FILE_SUFFIX_RE, ""),
-      status: pageParsed.status,
-      stats,
-    };
-  } catch (err) {
-    return {
-      path: (err as Error).message,
-      status: 500,
-    };
-  }
-}
 
 export async function introspectApp(cwd: string): Promise<SiteMapURL[]> {
   const appDir = path.join(cwd, "app");
@@ -39,7 +19,7 @@ export async function introspectApp(cwd: string): Promise<SiteMapURL[]> {
     .filter((f) => allPages.has(f.replace(META_RE, ".html")));
   const filesParsed = await Promise.all(
     metaFiles.map((file) => {
-      return introspectPage(appDir, file);
+      return introspectFile(appDir, file, FILE_SUFFIX_RE);
     }),
   );
   const validFiles = filesParsed.filter(
