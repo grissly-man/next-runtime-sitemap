@@ -2,7 +2,7 @@
 
 const assert = require("assert");
 const path = require("path");
-const { readFile } = require("fs/promises");
+const { readFile, writeFile } = require("fs/promises");
 const puppeteer = require("puppeteer");
 
 function normalizeTimeStamps(xml) {
@@ -39,6 +39,8 @@ async function test() {
     sitemapResponse.text(),
     snapshotPromise,
   ]);
+
+  await writeFile(path.join(__dirname, "snapshot/actual.xml"), actual);
 
   assert.equal(
     normalizeTimeStamps(actual.toString()),
