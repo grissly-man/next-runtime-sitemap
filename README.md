@@ -1,6 +1,6 @@
-# next-runtime-sitemap
+# 🛰️ next-runtime-sitemap
 
-**Generate sitemaps at runtime for Next.js App Router projects, based on your actual deployed filesystem.**
+**Generate sitemaps at runtime for Next.js projects, based on your actual deployed filesystem.**
 
 [![npm version](https://img.shields.io/npm/v/next-runtime-sitemap.svg)](https://www.npmjs.com/package/next-runtime-sitemap)  
 [![GitHub issues](https://img.shields.io/github/issues/grissly-man/next-runtime-sitemap.svg)](https://github.com/grissly-man/next-runtime-sitemap/issues)
@@ -11,8 +11,8 @@
 
 - 🧠 **Runtime sitemap generation** — no need for build-time crawling or prerendering.
 - 📂 **Filesystem-aware** — inspects your deployed `.next` directory to find generated pages.
-- 🚀 **Optimized for App Router** — supports Next.js 13+ using the `app/` directory.
 - 🔁 **Works with revalidation** — dynamic routes are supported via `force-static` + `revalidate`.
+- 🪶 **Now supports Pages Router** — your sitemap can now include pages from both `app/` and `pages/` directories.
 
 ---
 
@@ -22,7 +22,8 @@
 > Serverless functions run in isolated environments and only have access to files that are statically imported.  
 > Since this package inspects the deployed filesystem at runtime, it must run in a persistent environment (e.g., custom Node.js server, Docker, or self-hosted deployment).
 
-- ✅ Next.js **App Router** only (`app/` directory)
+- ✅ Sitemap route must be hosted via the **App Router** (`app/` directory).
+- ✅ Supports both App Router and Pages Router pages in the generated sitemap.
 - ✅ You must enable `force-static` + `revalidate` on dynamic routes for them to persist to the filesystem.
 - ✅ Static routes are automatically captured.
 - ❌ Fully dynamic (e.g., `force-dynamic`) routes are **not** included—they don’t emit files.
@@ -53,7 +54,7 @@ import { generateAppRouterSitemap } from "next-runtime-sitemap/dist/app";
 export const GET = generateAppRouterSitemap();
 ```
 
-This will generate sitemaps at runtime based on the pages that have actually been built and stored on the server.
+> 🔄 This route **must** live inside the App Router, but it can generate a sitemap that includes both App and Pages Router pages.
 
 ---
 
@@ -94,7 +95,7 @@ Visit `/sitemaps/sitemap.xml` in your browser, or curl it:
 curl https://your-domain.com/sitemaps/sitemap.xml
 ```
 
-You’ll get a standard XML sitemap that reflects your currently built static and dynamic (with revalidation) pages.
+You’ll get a standard XML sitemap that reflects your currently built static and dynamic (with revalidation) pages—including those from the Pages Router.
 
 ---
 
