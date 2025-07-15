@@ -3,14 +3,17 @@ import { readdir } from "fs/promises";
 import { introspectFile } from "./introspect-file";
 import { SiteMapURL } from "next-dynamic-sitemap/dist/types";
 import { generateURL } from "next-dynamic-sitemap/dist/util";
-import type {FileIntrospectionProps} from "./introspect-files";
+import type { FileIntrospectionProps } from "./introspect-files";
 
 const JSON_RE = /(?:\.js\.nft)?\.json$/;
 const FILE_SUFFIX_RE = /(?:(?:^|\/)?index)?(?:\.js\.nft)?\.json$/;
 
 type ParsedFileMetadata = Awaited<ReturnType<typeof introspectFile>>;
 
-function deLocalizeFiles(files: ParsedFileMetadata[], locale: string): ParsedFileMetadata[] {
+function deLocalizeFiles(
+  files: ParsedFileMetadata[],
+  locale: string,
+): ParsedFileMetadata[] {
   const delocalizedFiles: ParsedFileMetadata[] = [];
   const localizedRegex = new RegExp(`^${locale}/`);
 
@@ -18,20 +21,23 @@ function deLocalizeFiles(files: ParsedFileMetadata[], locale: string): ParsedFil
     if (localizedRegex.test(file.path)) {
       delocalizedFiles.push({
         ...file,
-        path: file.path.replace(localizedRegex, "")
+        path: file.path.replace(localizedRegex, ""),
       });
     } else if (!file.path) {
       delocalizedFiles.push({
         ...file,
-        path: `${locale}/`
-      })
+        path: `${locale}/`,
+      });
     }
   }
 
   return delocalizedFiles;
 }
 
-export async function introspectPages(cwd: string, props?: FileIntrospectionProps) {
+export async function introspectPages(
+  cwd: string,
+  props?: FileIntrospectionProps,
+) {
   const pagesDir = path.join(cwd, "pages");
   const files = await readdir(pagesDir, { recursive: true });
   const allFiles = new Set(files);

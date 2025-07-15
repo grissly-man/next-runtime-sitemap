@@ -4,7 +4,7 @@ import { introspectFiles } from "./lib/introspect-files";
 
 async function binSeeOutput() {
   const result = await introspectFiles({
-    defaultLocale: "en"
+    defaultLocale: "en",
   });
   console.error(result);
 }

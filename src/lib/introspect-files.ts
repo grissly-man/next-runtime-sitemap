@@ -5,7 +5,7 @@ import { introspectPages } from "./introspect-pages";
 
 export type FileIntrospectionProps = {
   defaultLocale: string;
-}
+};
 
 export async function introspectFiles(props?: FileIntrospectionProps) {
   const serverDir = path.join(process.cwd(), ".next", "server");
