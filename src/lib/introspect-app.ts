@@ -1,8 +1,8 @@
 import path from "node:path";
-import { readdir } from "fs/promises";
-import { SiteMapURL } from "next-dynamic-sitemap/dist/types";
-import { generateURL } from "next-dynamic-sitemap/dist/util";
-import { introspectFile } from "./introspect-file";
+import {readdir} from "fs/promises";
+import {ChangeFreq, SiteMapURL} from "next-dynamic-sitemap/dist/types";
+import {generateURL} from "next-dynamic-sitemap/dist/util";
+import {introspectFile} from "./introspect-file";
 
 const META_RE = /\.meta$/;
 const NEXT_RESERVED_RE = /^_/;
@@ -31,7 +31,7 @@ export async function introspectApp(cwd: string): Promise<SiteMapURL[]> {
   );
   return validFiles.map((f) => {
     const url: SiteMapURL = {
-      changefreq: "hourly",
+      changefreq: ChangeFreq.HOURLY,
       lastmod: f.stats && new Date(f.stats.mtime).toISOString(),
       loc: generateURL(f.path),
       priority: (f.path && 0.8) || 1,

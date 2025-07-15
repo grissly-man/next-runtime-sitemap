@@ -1,9 +1,9 @@
 import path from "node:path";
-import { readdir } from "fs/promises";
-import { introspectFile } from "./introspect-file";
-import { SiteMapURL } from "next-dynamic-sitemap/dist/types";
-import { generateURL } from "next-dynamic-sitemap/dist/util";
-import type { FileIntrospectionProps } from "./introspect-files";
+import {readdir} from "fs/promises";
+import {introspectFile} from "./introspect-file";
+import {ChangeFreq, SiteMapURL} from "next-dynamic-sitemap/dist/types";
+import {generateURL} from "next-dynamic-sitemap/dist/util";
+import type {FileIntrospectionProps} from "./introspect-files";
 
 const JSON_RE = /(?:\.js\.nft)?\.json$/;
 const FILE_SUFFIX_RE = /(?:(?:^|\/)?index)?(?:\.js\.nft)?\.json$/;
@@ -61,7 +61,7 @@ export async function introspectPages(
 
   return filesParsed.map((f) => {
     const url: SiteMapURL = {
-      changefreq: "hourly",
+      changefreq: ChangeFreq.HOURLY,
       lastmod: f.stats && new Date(f.stats.mtime).toISOString(),
       loc: generateURL(f.path),
       priority: (f.path && 0.8) || 1,

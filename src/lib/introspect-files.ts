@@ -14,14 +14,5 @@ export async function introspectFiles(props?: FileIntrospectionProps) {
     introspectPages(serverDir, props).catch(() => []),
   ]);
 
-  const all = [...appFiles, ...pagesFiles].sort((f1, f2) => {
-    if (f1.priority && f2.priority && f1.priority > f2.priority) return -1;
-    if (f1.priority && f2.priority && f1.priority < f2.priority) return 1;
-    if (f1.priority && !f2.priority) return -1;
-    if (!f1.priority && f2.priority) return 1;
-
-    return f1.loc.localeCompare(f2.loc);
-  });
-
-  return generateXMLSitemap(all);
+  return generateXMLSitemap([...appFiles, ...pagesFiles]);
 }
