@@ -62,6 +62,21 @@ export const GET = generateAppRouterSitemap();
 
 ### Base URL
 
+### Internationalization (i18n)
+
+If your project uses [Next.js internationalized routing](https://nextjs.org/docs/advanced-features/i18n-routing), the sitemap will now automatically include both:
+
+- All localized routes (e.g., `mysite.com/en/about`)
+- Their de-localized equivalents (e.g., `mysite.com/about`), mapped from the default locale
+
+To enable this behavior, pass your default locale explicitly when generating the sitemap:
+
+```ts
+import { generateAppRouterSitemap } from "next-runtime-sitemap/dist/app";
+
+module.exports = generateAppRouterSitemap({ defaultLocale: "en" });
+```
+
 You must provide a `SITEMAP_GEN_BASE_URL` environment variable.
 
 It’s used to generate absolute URLs in your sitemap.
