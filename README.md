@@ -51,7 +51,7 @@ Inside that file:
 ```ts
 import { generateAppRouterSitemap } from "next-runtime-sitemap/dist/app";
 
-export const GET = generateAppRouterSitemap();
+module.exports = generateAppRouterSitemap();
 ```
 
 > 🔄 This route **must** live inside the App Router, but it can generate a sitemap that includes both App and Pages Router pages.
