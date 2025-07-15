@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { introspectFiles } from "../lib/introspect-files";
+import {FileIntrospectionProps, introspectFiles} from "../lib/introspect-files";
 import { notFound } from "next/navigation";
 
-export function generateAppRouterSitemap() {
+export function generateAppRouterSitemap(fileIntrospectionProps?: FileIntrospectionProps) {
   return {
     async GET(
       request: NextRequest,
@@ -14,7 +14,7 @@ export function generateAppRouterSitemap() {
         return notFound();
       }
 
-      const files = await introspectFiles();
+      const files = await introspectFiles(fileIntrospectionProps);
 
       return new NextResponse(files, {
         headers: {
