@@ -53,7 +53,7 @@
   "bugs": {
     "url": "https://github.com/grissly-man/next-runtime-sitemap/issues"
   },
-  "homepage": "https://github.com/grissly-man/next-runtime-sitemap#readme",
+  "homepage": "https://grissly-man.com/projects/nextjs-runtime-sitemap-generator",
   "devDependencies": {
     "@types/node": "^24.0.13",
     "@types/react": "19.1.8",
