@@ -1,6 +1,6 @@
 {
   "name": "next-runtime-sitemap",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Generates a sitemap for nextjs apps at runtime, using a crawl of the local filesystem",
   "main": "dist/index.js",
   "bin": {
