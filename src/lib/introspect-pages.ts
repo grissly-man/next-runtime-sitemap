@@ -55,11 +55,19 @@ export async function introspectPages(
     filteredFiles.map((f) => introspectFile(pagesDir, f, FILE_SUFFIX_RE)),
   );
 
+  const filesStatusFiltered = filesParsed.filter(f => {
+    const value = typeof f.status === "number" && f.status >= 200 && f.status < 400;
+    if (!value) {
+      console.error("not indexing file due to invalid status code", f)
+    }
+    return value;
+  });
+
   if (props?.defaultLocale) {
-    filesParsed.push(...deLocalizeFiles(filesParsed, props.defaultLocale));
+    filesStatusFiltered.push(...deLocalizeFiles(filesStatusFiltered, props.defaultLocale));
   }
 
-  return filesParsed.map((f) => {
+  return filesStatusFiltered.map((f) => {
     const url: SiteMapURL = {
       changefreq: ChangeFreq.HOURLY,
       lastmod: f.stats && new Date(f.stats.mtime).toISOString(),
