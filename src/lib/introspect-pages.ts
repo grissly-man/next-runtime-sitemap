@@ -1,9 +1,9 @@
 import path from "node:path";
-import {readdir} from "fs/promises";
-import {introspectFile} from "./introspect-file";
-import {ChangeFreq, SiteMapURL} from "next-dynamic-sitemap/dist/types";
-import {generateURL} from "next-dynamic-sitemap/dist/util";
-import type {FileIntrospectionProps} from "./introspect-files";
+import { readdir } from "fs/promises";
+import { introspectFile } from "./introspect-file";
+import { ChangeFreq, SiteMapURL } from "next-dynamic-sitemap/dist/types";
+import { generateURL } from "next-dynamic-sitemap/dist/util";
+import type { FileIntrospectionProps } from "./introspect-files";
 
 const JSON_RE = /(?:\.js\.nft)?\.json$/;
 const FILE_SUFFIX_RE = /(?:(?:^|\/)?index)?(?:\.js\.nft)?\.json$/;

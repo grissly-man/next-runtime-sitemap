@@ -1,6 +1,17 @@
 import path from "node:path";
 import { readFile, stat } from "fs/promises";
 
+async function getPageStatus(path: string) {
+  const result = await fetch(
+    `http://${process.env.HOSTNAME || "localhost"}:${process.env.PORT || 3000}/${path}`,
+    {
+      method: "HEAD",
+    },
+  );
+
+  return result.status;
+}
+
 export async function introspectFile(
   dir: string,
   page: string,
@@ -13,9 +24,11 @@ export async function introspectFile(
       stat(fullPath),
     ]);
     const pageParsed = JSON.parse(pageContent);
+    const pathname = page.replace(fileSuffixRE, "");
+    const status = pageParsed.status || (await getPageStatus(pathname));
     return {
-      path: page.replace(fileSuffixRE, ""),
-      status: pageParsed.status,
+      path: pathname,
+      status,
       stats,
     };
   } catch (err) {

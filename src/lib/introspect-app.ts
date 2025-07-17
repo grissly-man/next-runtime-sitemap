@@ -1,8 +1,8 @@
 import path from "node:path";
-import {readdir} from "fs/promises";
-import {ChangeFreq, SiteMapURL} from "next-dynamic-sitemap/dist/types";
-import {generateURL} from "next-dynamic-sitemap/dist/util";
-import {introspectFile} from "./introspect-file";
+import { readdir } from "fs/promises";
+import { ChangeFreq, SiteMapURL } from "next-dynamic-sitemap/dist/types";
+import { generateURL } from "next-dynamic-sitemap/dist/util";
+import { introspectFile } from "./introspect-file";
 
 const META_RE = /\.meta$/;
 const NEXT_RESERVED_RE = /^_/;
